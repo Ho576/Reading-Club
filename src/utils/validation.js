@@ -16,3 +16,33 @@ export const validateLogin = (data) => {
   });
   return schema.validate(data);
 };
+
+export const validateBook = (book) => {
+  const schema = Joi.object({
+    title: Joi.string().required(),
+    author: Joi.string().required(),
+    category: Joi.string().required(),
+  });
+  return schema.validate(book);
+};
+
+export const validateDiscussion = (data) => {
+  const schema = Joi.object({
+    book: Joi.string().pattern(/^[0-9a-fA-F]{24}$/).required(),
+    text: Joi.string().min(1).required(),
+    dateCommented: Joi.date().default(Date.now)
+  });
+
+  return schema.validate(data);
+};
+
+export const validateMeeting = (data) => {
+  const schema = Joi.object({
+    date: Joi.date().required(),
+    time: Joi.string().required(),
+    location: Joi.string().required(),
+    book: Joi.string().pattern(/^[0-9a-fA-F]{24}$/).required()
+  });
+
+  return schema.validate(data);
+};

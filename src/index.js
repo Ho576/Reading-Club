@@ -20,5 +20,5 @@ app.use('/api/books', auth, bookRoutes);
 app.use('/api/meetings', auth, meetingRoutes);
 app.use('/api/discussions', auth, discussionRoutes);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -15,6 +15,10 @@ export const register = async (req, res) => {
     email: req.body.email,
     password: req.body.password
   });
+  
+  // if(role){
+  //   user.role = role
+  // }
 
   await user.save();
   const token = jwt.sign({ _id: user._id, role: user.role }, process.env.JWT_SECRET);
