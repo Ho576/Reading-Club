@@ -14,6 +14,9 @@ connectDB();
 const app = express();
 app.use(express.json());
 
+app.get('/', (req, res) => {
+  return res.json({ 'message': 'Welcome to the Reading Club system' });
+});
 app.use('/api/auth', authRoutes);
 app.use('/api/users', auth, userRoutes);
 app.use('/api/books', auth, bookRoutes);
