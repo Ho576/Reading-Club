@@ -46,3 +46,15 @@ export const validateMeeting = (data) => {
 
   return schema.validate(data);
 };
+
+export const validateUser = (data) => {
+  const schema = Joi.object({
+    name: Joi.string().min(6),
+    email: Joi.string().min(6).email(),
+    password: Joi.string().min(6),
+    role: Joi.string().valid('admin', 'superadmin'),
+    isActive: Joi.boolean()
+  }).min(1); 
+
+  return schema.validate(data);
+};
